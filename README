@@ -1,0 +1,19 @@
+Code for Insight Project - Joe Gallagher - wwww.rewindX.com
+
+-- app.py -- 
+Flask/Python web app code to accept user input of music artist and album title.
+Serves 10 similiar albums from 12 month period before and after seed album chart entry.
+Weights seed artist genre metadata based on inverse count occurences in artists from +/- 12 month period.
+
+-- echonest_cache.p -- 
+Used to query echonest db via pyechonest wrapper and gets metadata on artists in chart db.
+Results inserted into mySQL db and pickled.
+
+-- spotify_link_cache.py --
+Used to query spotify db and cache links to spotify:url for each artist/album pair.
+Links inserted into mySQL db and pickled.
+
+-- retrieve_chart_data.py -- 
+Code to scrape www.musicchartarchive.com to get artist/entry/chart position for 
+billboard top 50 album and single data. Data written to text csv for later 
+import into mySQL db.
