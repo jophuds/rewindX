@@ -1,7 +1,20 @@
 '''
 Created on Feb 5, 2013
 
-@author: user
+@author: Joe. G
+
+Cylces through chart db entry and title and
+searches Spotify for spotify:url matching that
+artist title and entry.
+
+If there is a match then the spotify link
+is included in db.
+
+Writes to a file chart entries that cannot 
+be matched for later inspection.
+
+Spotify is rate-limited so sleep() calls used.
+
 '''
 import json
 import urllib2
@@ -28,14 +41,14 @@ def main():
     date1 = "1986-01-01"
     date2 = "2013-01-01"
     
-    db = MySQLdb.connect(user = 'root', passwd = 'password', db = 'db')      
+    db = MySQLdb.connect(user = 'root', passwd = 'xxxxxxxx', db = 'db')      
     
     album_df = albums_in_span(db, date1, date2, 'album')
         
     db.close()
 
     '''Open Spotify db'''
-    db = MySQLdb.connect(user = 'root', passwd = 'password', db = 'db_new')      
+    db = MySQLdb.connect(user = 'root', passwd = 'xxxxxxx', db = 'db_new')      
     c = db.cursor()
 
     s = t = 5267
