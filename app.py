@@ -141,9 +141,9 @@ def driver(seed_album, seed_artist):
        Orchestrates recommendations and returns rec list'''
 
 
-    db = MySQLdb.connect(user = 'root', passwd = 'password', db = 'db')  
+    db = MySQLdb.connect(user = 'root', passwd = 'xxxxxxxxx', db = 'db')  
     
-    db_new = MySQLdb.connect(user = 'root', passwd = 'password', db = 'db_new')
+    db_new = MySQLdb.connect(user = 'root', passwd = 'xxxxxxxx', db = 'db_new')
     
     
     tables = ["billboard", "album", "single"]
@@ -302,7 +302,7 @@ def driver(seed_album, seed_artist):
 
 def get_pos_album_list(seed_artist):
 
-    db = MySQLdb.connect(user = 'root', passwd = 'password', db = 'db_new')  
+    db = MySQLdb.connect(user = 'root', passwd = 'xxxxxxxx', db = 'db_new')  
     c = db.cursor()
     
     query = """SELECT DISTINCT title FROM spot_link 
@@ -332,7 +332,7 @@ def get_pos_album_list(seed_artist):
 
 def get_pos_artist_list():
     
-    db = MySQLdb.connect(user = 'root', passwd = 'password', db = 'db_new')  
+    db = MySQLdb.connect(user = 'root', passwd = 'xxxxxxxx', db = 'db_new')  
     c = db.cursor()
     query = """SELECT DISTINCT artist.name FROM artist, genre 
             WHERE artist.echo_id = genre.echo_id;"""
@@ -359,7 +359,7 @@ def get_pos_artist_list():
 
 def get_spotify_link(echo_id, artist_name, title):
     
-    db = MySQLdb.connect(user = 'root', passwd = 'password', db = 'db_new')      
+    db = MySQLdb.connect(user = 'root', passwd = 'xxxxxxxxx', db = 'db_new')      
     c = db.cursor()
 
     query = """SELECT link FROM spot_link 
@@ -856,5 +856,5 @@ def get_genre_df(artist_name, title, echo_id, perf, db_new):
 if __name__ == '__main__':
     '''Set debug to False if running on AWS '''
     port = int(os.environ.get('PORT', 8080))
-    app.debug = True
+    app.debug = False
     app.run(host='0.0.0.0', port=port)
