@@ -1,9 +1,16 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sat Jan 29 17:39:52 2013
-Retrieves chart data from musichartarchives website
 
-@author: user
+Retrieves chart data from musichartarchives website.
+
+Writes data to csv txt file for later import into mysql
+after inspection.
+
+Outputs title and entry data that are not strings and does
+not include this scraped data in csv.
+
+@author: Joe G.
 """
 import urllib2
 import sys
@@ -17,7 +24,7 @@ def integrity_check():
     date1 = "1986-01-01"
     date2 = "2013-01-01"
     
-    db = MySQLdb.connect(user = 'root', passwd = 'password', db = 'db')      
+    db = MySQLdb.connect(user = 'root', passwd = 'xxxxxxxx', db = 'db')      
     
     query = ("""SELECT DISTINCT artist,title FROM album WHERE chart_date BETWEEN 
              '{0}' AND '{1}';""".format(date1, date2))
