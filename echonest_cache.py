@@ -1,7 +1,17 @@
 '''
 Created on Feb 2, 2013
 
-@author: user
+@author: Joe G.
+
+Cycles through every entry in chart db
+and searches echonest for that artist.
+
+If echonest top return is an exact
+match for chart entry, metadata collected 
+and inserted into mySQL db.
+
+All metadata also pickled and written to local file.
+
 '''
 
 from pyechonest import artist, config
@@ -56,10 +66,10 @@ def main():
     date2 = "2013-01-01"
     
     db_name = MySQLdb.connect(user = 'root',
-                        passwd = 'password',
+                        passwd = 'xxxxxxxxx',
                         db = 'db')  
     
-    config.ECHO_NEST_API_KEY = "VYGMIODRY9MNEYUM8"    
+    config.ECHO_NEST_API_KEY = "XXXXXXXXXXXX"    
     
     artists = artists_in_span(db_name, date1, date2, 'album')
     artist_list = []
@@ -77,7 +87,7 @@ def main():
     db_name.close()
     
     db = MySQLdb.connect(user = 'root',
-                        passwd = 'password',
+                        passwd = 'xxxxxxxx',
                         db = 'db_new')  
         
     c = db.cursor()
